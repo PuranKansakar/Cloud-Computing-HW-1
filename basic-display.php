@@ -29,16 +29,32 @@ if ($conn->connect_error) {
     </style>
 </head>
 <body>
+    <?php
+        if (isset($_FILES['userfile'])){
+            //print_r($_FILES);
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'images/'.
+                    $_FILES['userfile']['tmp_name']);
+        }
+        function pre_r($array){
+            echo '</pre>';
+            print_r($array);
+            echo '</pre>';
+        }
+    ?>
     <div class="page-header">
-        <h1><a href="welcome.php">Could Computing HW 1</a></h1>
+        <h1><a href="welcome.php">Cloud Computing HW 1</a></h1>
         <h2>Username:<b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h2>
         <h2>First Name:<b><?php echo htmlspecialchars($_SESSION["firstname"]); ?></b></h2>
         <h2>Last Name:<b><?php echo htmlspecialchars($_SESSION["lastname"]); ?></b></h2>
         <h2>Email Address:<b><?php echo htmlspecialchars($_SESSION["email"]); ?></b></h2>
-        <h3>Count for words on page:<b><?php 
+        <h3>Count for words in file:<b><?php 
         $str = file_get_contents('http://ec2-3-12-147-217.us-east-2.compute.amazonaws.com/basic-display.php');
         echo str_word_count($str); ?></b></h3>
-
+        <p></p>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="userfile" />
+            <input type="submit" value="Upload" />            
+        </form>
 </div>
     <p>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
