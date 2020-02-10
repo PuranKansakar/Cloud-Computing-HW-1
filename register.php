@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     // Prepare an insert statement
-    $sql = "INSERT INTO UserData.users (username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?)";
 
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -29,10 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $param_lastname = $lastname;
         $param_email = $email;
 
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
-            header("location: login.php");
-        }
+        header("location: login.php");
+
     }
 
     // Close statement and connection
@@ -55,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <div class="wrapper">
-        <h1><a href="welcome.php">Could Computing HW 1</a></h1>
+        <h1><a href="welcome.php">Cloud Computing HW 1</a></h1>
 
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
