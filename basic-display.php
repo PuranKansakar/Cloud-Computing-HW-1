@@ -47,16 +47,10 @@ if ($conn->connect_error) {
         <h2>First Name:<b><?php echo htmlspecialchars($_SESSION["firstname"]); ?></b></h2>
         <h2>Last Name:<b><?php echo htmlspecialchars($_SESSION["lastname"]); ?></b></h2>
         <h2>Email Address:<b><?php echo htmlspecialchars($_SESSION["email"]); ?></b></h2>
-        <h3>Count for words in file:<b><?php 
-        $str = file_get_contents('http://ec2-3-12-147-217.us-east-2.compute.amazonaws.com/basic-display.php');
-        echo str_word_count($str); ?></b></h3>
-        <p></p>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="userfile" />
-            <input type="submit" value="Upload" />            
-        </form>
+                
 </div>
     <p>
+        <a href="uploadfile.php" class="btn btn-secondary">Upload a File</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
 </body>
